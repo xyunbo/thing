@@ -58,5 +58,40 @@ namespace thing
         {
             Form1.add5 = textBox4.Text;
         }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            Form1.add6 = textBox7.Text;
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            Form1.add7 = textBox5.Text;
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            Form1.add8 = textBox6.Text;
+        }
+
+        private void textBox5_Leave(object sender, EventArgs e)
+        {
+            int test;
+            if((textBox5.Text.Length != 4 || !int.TryParse(textBox5.Text, out test)) && textBox5.Text != string.Empty)
+            {
+                MessageBox.Show("Keycode must be either a 4 digit number or null.");
+                textBox5.Focus();
+            }
+        }
+
+        private void textBox6_Enter(object sender, EventArgs e)
+        {
+            textBox6.UseSystemPasswordChar = false;
+        }
+
+        private void textBox6_Leave(object sender, EventArgs e)
+        {
+            textBox6.UseSystemPasswordChar = true;
+        }
     }
 }

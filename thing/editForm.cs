@@ -19,6 +19,9 @@ namespace thing
             textBox2.Text = Form1.edit3;
             textBox3.Text = Form1.edit4;
             textBox4.Text = Form1.edit5;
+            textBox5.Text = Form1.edit7;
+            textBox6.Text = Form1.edit8;
+            textBox7.Text = Form1.edit6;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -75,6 +78,41 @@ namespace thing
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             Form1.edit5 = textBox4.Text;
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            Form1.edit7 = textBox5.Text;
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            Form1.edit6 = textBox7.Text;
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            Form1.edit8 = textBox6.Text;
+        }
+
+        private void textBox5_Leave(object sender, EventArgs e)
+        {
+            int test;
+            if ((textBox5.Text.Length != 4 || !int.TryParse(textBox5.Text, out test)) && textBox5.Text != string.Empty)
+            {
+                MessageBox.Show("Keycode must be either a 4 digit number or null.");
+                textBox5.Focus();
+            }
+        }
+
+        private void textBox6_Enter(object sender, EventArgs e)
+        {
+            textBox6.UseSystemPasswordChar = false;
+        }
+
+        private void textBox6_Leave(object sender, EventArgs e)
+        {
+            textBox6.UseSystemPasswordChar = true;
         }
     }
 }

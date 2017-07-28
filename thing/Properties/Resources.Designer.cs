@@ -59,15 +59,5 @@ namespace thing.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Database1 {
-            get {
-                object obj = ResourceManager.GetObject("Database1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

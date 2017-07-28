@@ -46,6 +46,12 @@
             this.printButton = new System.Windows.Forms.Button();
             this.importButton = new System.Windows.Forms.Button();
             this.exportButton = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.details = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnPrintForm = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,7 +79,7 @@
             this.tableLayoutPanel1.Controls.Add(this.editButton, 7, 5);
             this.tableLayoutPanel1.Controls.Add(this.addButton, 9, 5);
             this.tableLayoutPanel1.Controls.Add(this.deleteButton, 11, 5);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.helpButton, 11, 1);
             this.tableLayoutPanel1.Controls.Add(this.clsButton, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 3, 1);
@@ -81,21 +87,24 @@
             this.tableLayoutPanel1.Controls.Add(this.comboBox1, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 6, 3);
             this.tableLayoutPanel1.Controls.Add(this.printButton, 9, 1);
-            this.tableLayoutPanel1.Controls.Add(this.importButton, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.exportButton, 4, 5);
+            this.tableLayoutPanel1.Controls.Add(this.importButton, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.exportButton, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.progressBar1, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.details, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnPrintForm, 6, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
+            this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1263, 632);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
@@ -144,7 +153,7 @@
             // 
             this.editButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.editButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editButton.Location = new System.Drawing.Point(1035, 151);
+            this.editButton.Location = new System.Drawing.Point(1035, 176);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(57, 31);
             this.editButton.TabIndex = 3;
@@ -156,7 +165,7 @@
             // 
             this.addButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addButton.Location = new System.Drawing.Point(1110, 151);
+            this.addButton.Location = new System.Drawing.Point(1110, 176);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(57, 31);
             this.addButton.TabIndex = 4;
@@ -168,7 +177,7 @@
             // 
             this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteButton.Location = new System.Drawing.Point(1185, 151);
+            this.deleteButton.Location = new System.Drawing.Point(1185, 176);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(57, 31);
             this.deleteButton.TabIndex = 5;
@@ -181,10 +190,11 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 11);
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 200);
+            this.dataGridView1.Location = new System.Drawing.Point(15, 213);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1227, 411);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1227, 398);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -282,7 +292,7 @@
             // importButton
             // 
             this.importButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.importButton.Location = new System.Drawing.Point(494, 151);
+            this.importButton.Location = new System.Drawing.Point(494, 139);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(145, 31);
             this.importButton.TabIndex = 14;
@@ -293,13 +303,64 @@
             // exportButton
             // 
             this.exportButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.exportButton.Location = new System.Drawing.Point(645, 151);
+            this.exportButton.Location = new System.Drawing.Point(645, 139);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(145, 31);
             this.exportButton.TabIndex = 15;
             this.exportButton.Text = "Export";
             this.exportButton.UseVisualStyleBackColor = true;
             this.exportButton.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // progressBar1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.progressBar1, 2);
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar1.Location = new System.Drawing.Point(494, 176);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(296, 31);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 16;
+            this.progressBar1.Visible = false;
+            // 
+            // details
+            // 
+            this.details.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.details.Location = new System.Drawing.Point(1035, 15);
+            this.details.Name = "details";
+            this.details.Size = new System.Drawing.Size(57, 44);
+            this.details.TabIndex = 17;
+            this.details.Text = "Details";
+            this.details.UseVisualStyleBackColor = true;
+            this.details.Click += new System.EventHandler(this.details_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.WorkerReportsProgress = true;
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            this.backgroundWorker2.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker2_ProgressChanged);
+            this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnPrintForm
+            // 
+            this.btnPrintForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPrintForm.Location = new System.Drawing.Point(922, 15);
+            this.btnPrintForm.Name = "btnPrintForm";
+            this.btnPrintForm.Size = new System.Drawing.Size(107, 44);
+            this.btnPrintForm.TabIndex = 18;
+            this.btnPrintForm.Text = "Print Form";
+            this.btnPrintForm.UseVisualStyleBackColor = true;
+            this.btnPrintForm.Click += new System.EventHandler(this.btnPrintForm_Click);
             // 
             // Form1
             // 
@@ -340,6 +401,12 @@
         private System.Windows.Forms.Button printButton;
         private System.Windows.Forms.Button importButton;
         private System.Windows.Forms.Button exportButton;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button details;
+        private System.Windows.Forms.Button btnPrintForm;
     }
 }
 

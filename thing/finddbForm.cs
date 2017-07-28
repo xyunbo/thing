@@ -25,6 +25,7 @@ namespace thing
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                Form1.createnew = false;
                 olddbDir = openFileDialog1.FileName;
                 textBox1.Text = olddbDir;
             }
